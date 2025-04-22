@@ -9,12 +9,12 @@ class Particula:
         self.trajetoria_y = [y]
 
     def newton(self, fx, fy, dt):
-        # Atualiza velocidade
+        # Att velocidade
         self.vx += fx * dt / self.massa
         self.vy += fy * dt / self.massa
-        # Atualiza posição
+        # Att posição
         self.x += self.vx * dt
         self.y += self.vy * dt
-        # Salva posição atual na trajetória
+        # Salva a nova posição na trajetória
         self.trajetoria_x.append(self.x)
         self.trajetoria_y.append(self.y)
