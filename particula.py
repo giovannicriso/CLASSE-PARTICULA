@@ -9,12 +9,19 @@ class Particula:
         self.trajetoria_y = [y]
 
     def newton(self, fx, fy, dt):
-        # Att velocidade
+        # Atualiza a velocidade
         self.vx += fx * dt / self.massa
         self.vy += fy * dt / self.massa
-        # Att posição
+        # Atualiza a posição
         self.x += self.vx * dt
         self.y += self.vy * dt
         # Salva a nova posição na trajetória
         self.trajetoria_x.append(self.x)
         self.trajetoria_y.append(self.y)
+
+    def evoluir(self, fx_func, fy_func, dt):
+        """Simula a evolução temporal enquanto y >= 0."""
+        while self.y >= 0:
+            fx = fx_func(self)
+            fy = fy_func(self)
+            self.newton(fx, fy, dt)
