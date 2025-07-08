@@ -5,4 +5,5 @@ Esta atividade tem como objetivo explorar os fundamentos de programação orient
 **Resultado**:
 
 
+
 ![Tragetória bidimensional](Ex1.PNG)
