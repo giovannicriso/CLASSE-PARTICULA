@@ -1,21 +1,24 @@
 from particula import Particula
 import matplotlib.pyplot as plt
 
-# Criar a partícula com posição inicial, velocidade, e massa. Posso mudar os parametros
+# Criar a partícula
 p = Particula(x=0, y=0, vx=10, vy=10, massa=1)
 
+# Parâmetros físicos
+dt = 0.1
+g = -9.8
 
-dt = 0.1  # intervalo de tempo
-g = -9.8  # aceleração da gravidade (m/s²)
+# Define as funções de força
+fx_func = lambda p: 0
+fy_func = lambda p: p.massa * g
 
-# Simula enquanto a partícula estiver no ar (y >= 0)
-while p.y >= 0:
-    p.newton(fx=0, fy=p.massa * g, dt=dt)
+# Evoluir a partícula
+p.evoluir(fx_func=fx_func, fy_func=fy_func, dt=dt)
 
-# mostra o numero de pontos da tragetoria
+# Exibir número de pontos
 print("Número de pontos simulados:", len(p.trajetoria_x))
 
-# Plotando a trajetória da partícula
+# Plotar
 plt.plot(p.trajetoria_x, p.trajetoria_y)
 plt.title("Lançamento Oblíquo")
 plt.xlabel("Posição x (m)")
